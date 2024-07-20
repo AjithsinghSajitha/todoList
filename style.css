@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --white: white;
+  --yellow-green: greenyellow;
+  --black: black;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  background-image: url("./img/body.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+input[type="text"] {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 1.2rem;
+  color: var(--white);
+}
+input[type="text"]:focus {
+  outline: none;
+  border: none;
+}
+input::placeholder {
+  color: var(--white);
+  opacity: 0.5; /* Firefox */
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100vh;
+  align-items: center;
+  justify-items: center;
+}
+
+.container {
+  position: relative;
+  height: 70%;
+  width: 75%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px 5px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Input and its wrapper */
+.todo-input-wrapper {
+  color: var(--white);
+  margin-top: 25px;
+  padding: 10px 15px;
+  background-color: rgba(240, 255, 255, 0.295);
+  border-radius: 10px;
+}
+
+#add-btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  text-align: center;
+  padding-left: 1px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#add-btn:hover {
+  color: var(--yellow-green);
+  transform: rotate(90deg);
+}
+
+/* To Do Item */
+main {
+  margin-top: 25px;
+}
+.todo-item {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(31, 60, 187, 0.342);
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+
+  align-items: center;
+  color: var(--white);
+  width: 400px;
+  height: 50px;
+}
+.todo-text {
+  width: 80%;
+}
+
+.fa-xmark {
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.fa-xmark:hover {
+  color: tomato;
+  transform: rotate(90deg);
+}
+
+.completed {
+  background-color: rgba(172, 255, 47, 0.74);
+  color: grey;
+}
+
+/* Status */
+footer {
+  position: absolute;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  bottom: 10px;
+}
+
+#completed,
+#total {
+  color: var(--white);
+}
