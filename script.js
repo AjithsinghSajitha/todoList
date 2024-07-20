@@ -31,7 +31,6 @@ const setCheckBox = (index, mainDiv, doText) => {
   checkbox.setAttribute("check-id", index);
   checkbox.addEventListener("click", () => {
     if (checkbox.checked) {
-      console.log("hellllllo");
       mainDiv.classList.add("completed");
       toDoList[index].done = true;
     } else {
@@ -59,7 +58,6 @@ const renderList = (toDoList) => {
 
     if (toDoList[index].done) {
       div.classList.add("completed");
-      console.log("added");
       checkbox.checked = true;
     }
 
