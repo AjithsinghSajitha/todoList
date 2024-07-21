@@ -142,11 +142,6 @@ main::-webkit-scrollbar-thumb {
   transform: rotate(90deg);
 }
 
-.completed {
-  background-color: rgba(172, 255, 47, 0.74);
-  color: grey;
-}
-
 /* Status */
 footer {
   position: absolute;
@@ -157,9 +152,15 @@ footer {
   text-shadow: 2px 2px 3px rgb(43, 214, 226);
 }
 
+/* Task status */
 #completed,
 #total {
   color: var(--white);
+}
+
+.completed {
+  background-color: rgba(172, 255, 47, 0.74);
+  color: grey;
 }
 
 .strike{
