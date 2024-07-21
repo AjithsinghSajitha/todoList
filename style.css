@@ -4,6 +4,10 @@
   --white: white;
   --yellow-green: greenyellow;
   --black: black;
+  --sb-track-color: #232e335d;
+  --sb-thumb-color: rgba(31, 60, 187);
+
+  --sb-size: 7px;
 }
 
 * {
@@ -31,7 +35,7 @@ input[type="text"]:focus {
 }
 input::placeholder {
   color: var(--white);
-  opacity: 0.5; /* Firefox */
+  opacity: 0.5;
 }
 
 .wrapper {
@@ -47,6 +51,7 @@ input::placeholder {
   height: 70%;
   width: 75%;
   max-width: 700px;
+  min-width: 450px;
   background: rgba(255, 255, 255, 0.07);
   border-radius: 16px;
   box-shadow: 0 4px 30px 5px rgba(0, 0, 0, 0.2);
@@ -70,7 +75,6 @@ input::placeholder {
   display: inline-block;
   font-size: 1.1rem;
   text-align: center;
-  padding-left: 1px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -86,7 +90,27 @@ input::placeholder {
 /* To Do Item */
 main {
   margin-top: 25px;
+  margin-bottom: 50px;
+  padding: 10px;
+  overflow-y:auto;
+
 }
+
+/*  Scroll */
+main::-webkit-scrollbar {
+  width: var(--sb-size)
+}
+
+main::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 5px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 5px;
+}
+
 .todo-item {
   margin-bottom: 5px;
   display: flex;
@@ -94,14 +118,18 @@ main {
   background-color: rgba(31, 60, 187, 0.342);
   border-radius: 8px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
-
   align-items: center;
   color: var(--white);
   width: 400px;
   height: 50px;
+  transition: all 0.5s;
 }
+
 .todo-text {
   width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .fa-xmark {
@@ -126,9 +154,14 @@ footer {
   display: flex;
   justify-content: space-between;
   bottom: 10px;
+  text-shadow: 2px 2px 3px rgb(43, 214, 226);
 }
 
 #completed,
 #total {
   color: var(--white);
+}
+
+.strike{
+  text-decoration: line-through;
 }

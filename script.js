@@ -33,9 +33,11 @@ const setCheckBox = (index, mainDiv, doText) => {
     if (checkbox.checked) {
       mainDiv.classList.add("completed");
       toDoList[index].done = true;
+      doText.classList.add('strike');
     } else {
       toDoList[index].done = false;
       mainDiv.classList.remove("completed");
+      doText.classList.remove('strike');
     }
     setCompleted();
   });
@@ -45,6 +47,7 @@ const setCheckBox = (index, mainDiv, doText) => {
 const SetToDoText = (text) => {
   let toDoText = document.createElement("span");
   toDoText.classList.add("todo-text");
+  toDoText.setAttribute('title', text);
   toDoText.innerText = text;
   return toDoText;
 };
