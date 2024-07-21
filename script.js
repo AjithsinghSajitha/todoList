@@ -48,7 +48,7 @@ const setCheckBox = (index, mainDiv, doText) => {
 };
 
 //Collect the text from toDoList array and add that inside a span
-const SetToDoText = (text) => {
+const setToDoText = (text) => {
   let toDoText = document.createElement("span");
   toDoText.classList.add("todo-text");
   toDoText.setAttribute("title", text);
@@ -61,7 +61,7 @@ const renderList = (toDoList) => {
   main[0].innerHTML = "";
   toDoList.map((item, index) => {
     let div = document.createElement("div");
-    let doText = SetToDoText(item.do);
+    let doText = setToDoText(item.do);
     let checkbox = setCheckBox(index, div, doText);
 
     if (toDoList[index].done) {
@@ -89,6 +89,6 @@ const addItem = () => {
   });
 };
 
-(function Init() {
+(function init() {
   addItem();
 })();
