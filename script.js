@@ -29,6 +29,7 @@ const renderList = (toDoList) => {
 
     if (toDoList[index].done) {
       div.classList.add("completed");
+      doText.classList.add("strike");
       checkbox.checked = true;
     }
 
@@ -68,8 +69,8 @@ const setCheckBox = (index, mainDiv, doText) => {
   checkbox.setAttribute("check-id", index);
   checkbox.addEventListener("click", () => {
     if (checkbox.checked) {
-      mainDiv.classList.add("completed");
       toDoList[index].done = true;
+      mainDiv.classList.add("completed");
       doText.classList.add("strike");
     } else {
       toDoList[index].done = false;
