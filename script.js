@@ -4,15 +4,22 @@ const userInput = document.getElementById("todo-text");
 const total = document.getElementById("total");
 const completed = document.getElementById("completed");
 
-const toDoList = [];
+const toDoList = JSON.parse(localStorage.getItem('myToDoList')) || [];
 
 //This will add user input to the list and set the focus to input
 const addItem = () => {
   addBtn.addEventListener("click", () => {
     if (userInput.value) toDoList.push({ do: userInput.value, done: false });
+    localStorage.setItem('myToDoList', JSON.stringify(toDoList));
     userInput.value = "";
     userInput.focus();
     renderList(toDoList);
+  });
+  
+  userInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      addBtn.click();
+    }
   });
 };
 
@@ -22,6 +29,7 @@ const addItem = () => {
 */
 const renderList = (toDoList) => {
   main[0].innerHTML = "";
+  
   toDoList.map((item, index) => {
     let div = document.createElement("div");
     let doText = setToDoText(item.do);
@@ -70,10 +78,12 @@ const setCheckBox = (index, mainDiv, doText) => {
   checkbox.addEventListener("click", () => {
     if (checkbox.checked) {
       toDoList[index].done = true;
+      localStorage.setItem('myToDoList', JSON.stringify(toDoList));
       mainDiv.classList.add("completed");
       doText.classList.add("strike");
     } else {
       toDoList[index].done = false;
+      localStorage.setItem('myToDoList', JSON.stringify(toDoList));
       mainDiv.classList.remove("completed");
       doText.classList.remove("strike");
     }
@@ -94,6 +104,7 @@ const setRemove = (index) => {
   remove.setAttribute("remove-id", index);
   remove.addEventListener("click", () => {
     toDoList.splice(index, 1);
+    localStorage.setItem('myToDoList', JSON.stringify(toDoList));
     renderList(toDoList);
     setCompleted();
     total.innerText = `Total: ${toDoList.length}`;
@@ -109,5 +120,7 @@ const setCompleted = () => {
 };
 
 (function init() {
+  renderList(toDoList);
+  setCompleted();
   addItem();
 })();
